@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees List</title>
+</head>
+<body>
+<h1> List</h1>
+<a href="/create-employees">Create Employees</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>Year Old</th>
+        <th>PHONE NUMBER</th>
+        <th>EMAIL</th>
+        <th>ADDRESS</th>
+        <th>Office</th>
+        <th>IMAGE</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+    </tr>
+    <tr th:each="p:${employees}">
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.name}"></td>
+        <td th:text="${p.yearOld}"></td>
+        <td th:text="${p.phoneNumber}"></td>
+        <td th:text="${p.email}"></td>
+        <td th:text="${p.address}"></td>
+        <td th:text="${p.office.name}"></td>
+        <td>
+           <img th:src="@{/home/duy/module 2/session13/Employees/src/main/resources/image/__${p.image}__}"  alt=""></td>
+        <td><a th:href="@{/edit-employees/__${p.id}__}">Edit</a></td>
+        <td><a th:href="@{/delete-employees/__${p.id}__}">Delete</a></td>
+    </tr>
+</table>
+</body>
+</html>
