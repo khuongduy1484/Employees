@@ -7,7 +7,6 @@ import java.io.File;
 
 @Entity
 @Table(name = "employees")
-
 public class Employees {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

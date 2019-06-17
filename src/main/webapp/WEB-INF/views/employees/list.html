@@ -6,19 +6,23 @@
 </head>
 <body>
 <h1> List</h1>
-<a href="/create-employees">Create Employees</a>
+<a href="/create-employees"><span th:text="#{create_employees}"></span></a>
+<br>
+<a href="/office"><span th:text="#{create_office}"></span></a>
+<br>
+Language: <a href="?lang=vn">VietNamese</a> |<a href="?lang=en">English</a>
 <table border="1">
     <tr>
         <th>ID</th>
-        <th>NAME</th>
-        <th>Year Old</th>
-        <th>PHONE NUMBER</th>
-        <th>EMAIL</th>
-        <th>ADDRESS</th>
-        <th>Office</th>
-        <th>IMAGE</th>
-        <th>EDIT</th>
-        <th>DELETE</th>
+        <th th:text="#{label_name}"></th>
+        <th th:text="#{label_yearOld}"></th>
+        <th th:text="#{label_phoneNumber}"></th>
+        <th th:text="#{label_email}"></th>
+        <th th:text="#{label_address}"></th>
+        <th th:text="#{label_office}"></th>
+        <th th:text="#{label_image}"></th>
+        <th th:text="#{label_edit}"></th>
+        <th th:text="#{label_delete}"></th>
     </tr>
     <tr th:each="p:${employees}">
         <td th:text="${p.id}"></td>
@@ -28,8 +32,7 @@
         <td th:text="${p.email}"></td>
         <td th:text="${p.address}"></td>
         <td th:text="${p.office.name}"></td>
-        <td>
-           <img th:src="@{/home/duy/module 2/session13/Employees/src/main/resources/image/__${p.image}__}"  alt=""></td>
+        <td><img th:src="@{/resources/image/__${p.image}__}" alt="" th:width="200" th:height="200 "></td>
         <td><a th:href="@{/edit-employees/__${p.id}__}">Edit</a></td>
         <td><a th:href="@{/delete-employees/__${p.id}__}">Delete</a></td>
     </tr>

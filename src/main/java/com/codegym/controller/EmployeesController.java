@@ -17,13 +17,13 @@ import java.io.IOException;
 
 @Controller
 public class EmployeesController {
-    private static   String UPLOAD_LOCATION= "/home/duy/module 2/session13/Employees/src/main/resources/image/";
+    private static   String UPLOAD_LOCATION= "/home/duy/module2/session13/Employees/src/main/resources/image/";
     @Autowired
     private OfficeSevice officeSevice;
     @Autowired
     private EmployeessSevice employeessSevice;
     @ModelAttribute("office")
-     public Iterable<Office>offices(){
+    public Iterable<Office>offices(){
         return officeSevice.fillAll();
     }
     @GetMapping("employees")
@@ -32,7 +32,7 @@ public class EmployeesController {
         modelAndView.addObject("employees",employeessSevice.fillAll());
         return modelAndView;
     }
-//
+    //
     @GetMapping("create-employees")
     public ModelAndView createEmployees(){
         ModelAndView modelAndView = new ModelAndView("employees/create");
@@ -61,19 +61,19 @@ public class EmployeesController {
     }
     @PostMapping("edit-employees")
     public String updateOffice(@ModelAttribute("employees") Employees employees){
-     employeessSevice.save(employees);
+        employeessSevice.save(employees);
         return "redirect:/employees";
     }
     @GetMapping("delete-employees/{id}")
     public ModelAndView deleteEmployees(@PathVariable Long id){
-      Employees employees = employeessSevice.findById(id);
+        Employees employees = employeessSevice.findById(id);
         ModelAndView modelAndView = new ModelAndView("employees/delete");
         modelAndView.addObject("employees",employees);
         return modelAndView;
     }
     @PostMapping("delete-employees")
     public String deleteOffices(@ModelAttribute("employees") Employees employees){
-       employeessSevice.delete(employees);
+        employeessSevice.delete(employees);
         return "redirect:/employees";
     }
 

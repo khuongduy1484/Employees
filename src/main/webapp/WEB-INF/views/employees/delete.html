@@ -1,41 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http:www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Delete Employees</title>
 </head>
 <body>
-<h1>Delete Employees</h1>
-<a href="/employees">Back Employees List</a>
+<h1 th:text="#{delete_employees}"></h1>
+<a href="/employees"><span th:text="#{back_list_employeess}"></span></a>
+Language: <a href="?lang=vn">VietNamese</a> | <a href="?lang=en">English</a>
 <br>
 <span>Are You Sure ?</span>
 <form th:action="@{/delete-employees}" method="post" th:object="${employees}">
     <table border="1">
         <input type="hidden" th:field="*{id}">
         <tr>
-            <td>Name</td>
+            <td th:text="#{label_name}"></td>
             <td><input type="text" th:field="*{name}"></td>
         </tr><tr>
-        <td>Year Old</td>
+        <td th:text="#{label_yearOld}"></td>
         <td><input type="text" th:field="*{yearOld}"></td>
     </tr>
         <tr>
-            <td>Phone Number</td>
+            <td th:text="#{label_phoneNumber}"></td>
             <td><input type="text" th:field="*{phoneNumber}"></td>
         </tr>
         <tr>
-            <td>Email</td>
+            <td th:text="#{label_email}"></td>
             <td><input type="text" th:field="*{email}"></td>
         </tr>
         <tr>
-            <td>Address</td>
+            <td th:text="#{label_address}"></td>
             <td><input type="text" th:field="*{address}"></td>
         </tr>
         <tr>
-            <td>Office</td>
+            <td th:text="#{label_office}">O</td>
             <td><input type="text" th:field="*{office.name}"></td>
             </td>
         </tr>
+        <td th:text="#{label_image}"></td>
+        <td>
+            <img th:src="@{/resources/image/__*{image}__}" th:width="200" th:height="200">
+        </td>
 
         <tr>
             <td>
